@@ -25,14 +25,14 @@ const MainSlideshow = ({movies}: Props) => {
                 height={350}
                 style={{
                     width: width,
-                    height: 350,
+                    height: 300,
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}
                 mode="parallax"
                 modeConfig={{
                     parallaxScrollingScale: 0.8,
-                    parallaxScrollingOffset: 50
+                    parallaxScrollingOffset: 60
                 }}
                 defaultIndex={2}
             />
