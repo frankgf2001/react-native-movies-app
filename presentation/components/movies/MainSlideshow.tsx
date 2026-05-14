@@ -2,6 +2,7 @@ import { Movie } from '@/infrastructure/interface/movie.interface';
 import { useRef } from 'react';
 import { View, Text, useWindowDimensions } from 'react-native'
 import Carousel, { ICarouselInstance } from "react-native-reanimated-carousel";
+import MoviePoster from './MoviePoster';
 
 interface Props {
     movies: Movie[]
@@ -17,7 +18,9 @@ const MainSlideshow = ({movies}: Props) => {
             <Carousel
                 ref = {ref} 
                 data={movies}
-                renderItem={({ item }) => <Text>{item.title}</Text> }
+                renderItem={({ item }) =>  (
+                    <MoviePoster id={item.id} poster={ item.poster}/>
+                )}
                 width={200}
                 height={350}
                 style={{
@@ -29,7 +32,7 @@ const MainSlideshow = ({movies}: Props) => {
                 mode="parallax"
                 modeConfig={{
                     parallaxScrollingScale: 0.8,
-                    parallaxScrollingOffset: 80
+                    parallaxScrollingOffset: 50
                 }}
                 defaultIndex={2}
             />
