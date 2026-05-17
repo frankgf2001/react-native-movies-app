@@ -1,3 +1,4 @@
+import MovieDescription from "@/presentation/components/movie/MovieDescription";
 import MovieHeader from "@/presentation/components/movie/MovieHeader";
 import { useMovie } from "@/presentation/hooks/useMovie";
 import { useLocalSearchParams } from "expo-router";
@@ -18,12 +19,16 @@ const MovieScreen = () => {
     }
 
     return (
-        <ScrollView>
+        <ScrollView
+            showsVerticalScrollIndicator = {false}
+        >
             <MovieHeader
                 originalTitle={ movieQuery.data.originalTitle }
                 poster={ movieQuery.data.poster }
                 title={ movieQuery.data.title }
             />
+
+            <MovieDescription movie={ movieQuery.data }/>
         </ScrollView>
     );
 };
