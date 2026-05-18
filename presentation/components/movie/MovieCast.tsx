@@ -13,7 +13,7 @@ const MovieCast = ({cast }:Props) => {
 
             <FlatList
                 data={cast}
-                keyExtractor={(item) => `${item.id}` }
+                keyExtractor={(item, i) => `${item.id}-${i}` }
                 horizontal
                 showsHorizontalScrollIndicator = {false}
                 renderItem={({item}) => <ActorCast actor={ item }/>}
