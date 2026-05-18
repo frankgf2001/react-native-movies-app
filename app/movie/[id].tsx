@@ -1,3 +1,4 @@
+import MovieCast from "@/presentation/components/movie/MovieCast";
 import MovieDescription from "@/presentation/components/movie/MovieDescription";
 import MovieHeader from "@/presentation/components/movie/MovieHeader";
 import { useMovie } from "@/presentation/hooks/useMovie";
@@ -7,7 +8,7 @@ import { ActivityIndicator, ScrollView, Text, View } from "react-native";
 const MovieScreen = () => {
     const { id } = useLocalSearchParams();
 
-    const { movieQuery } = useMovie(+id);
+    const { movieQuery, castQuery } = useMovie(+id);
 
     if(movieQuery.isLoading || !movieQuery.data){
         return (
@@ -29,6 +30,8 @@ const MovieScreen = () => {
             />
 
             <MovieDescription movie={ movieQuery.data }/>
+
+            <MovieCast cast={ castQuery.data ?? [] }/>
         </ScrollView>
     );
 };

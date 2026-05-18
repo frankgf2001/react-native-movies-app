@@ -1,0 +1,15 @@
+import { movieApi } from "@/core/api/movie-api"
+import { Cast } from "@/infrastructure/interface/cast.interface";
+import { MovieDBCreditsResponse } from "@/infrastructure/interface/moviedb-credits.response"
+import { CastMapper } from "@/infrastructure/mappers/cast.mapper";
+
+export const getMovieCastAction = async(movieId: number):Promise<Cast[]> => {
+    try {
+        const { data } = await movieApi.get<MovieDBCreditsResponse>(`/${movieId}/credits`);
+
+        return data.cast.map(CastMapper.fromMovieDBCastToEntity);
+    } catch(error){
+        console.log(error);
+        throw 'cant load cast by id';
+    }
+}
